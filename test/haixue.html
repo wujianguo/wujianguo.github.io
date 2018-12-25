@@ -99,44 +99,44 @@
 
         function update_goods() {
             var t = $('#present_type_select').find("option:selected").val();
-            var id = $("input[name='goods_id'").val();
-            var callback_url = $("input[name='callback'").val();
+            var id = $("input[name='goods_id']").val();
+            var callback_url = $("input[name='callback']").val();
             var url = "hxkt://goods/detail?" + "id="+id + "&present="+t;
             if (callback_url.length > 0) {
                 var u = encodeURIComponent(callback_url)
                 url = "hxkt://goods/detail?" + "id="+id + "&present="+t + "&callback="+u;
             }
             $("a[name='buy']").attr("href", url);
-            $("p[name='goods_url'").text(url);
+            $("p[name='goods_url']").text(url);
         }
 
         $('#present_type_select').on('change', function (e) {
             update_goods();
         });
 
-        $("input[name='goods_id'").on('input', function (e) {
+        $("input[name='goods_id']").on('input', function (e) {
             update_goods();
         });
 
-        $("input[name='callback'").on('input', function (e) {
+        $("input[name='callback']").on('input', function (e) {
             update_goods();
         });
 
-        $("input[name='live_id'").on('input', function (e) {
-            var id = $("input[name='live_id'").val();
+        $("input[name='live_id']").on('input', function (e) {
+            var id = $("input[name='live_id']").val();
             var url = "hxkt://live/highchat?" + "id="+id
 
             $("a[name='watch']").attr("href", url);
-            $("p[name='live_url'").text(url);
+            $("p[name='live_url']").text(url);
 
         });
 
-        $("input[name='order_id'").on('input', function (e) {
-            var id = $("input[name='order_id'").val();
+        $("input[name='order_id']").on('input', function (e) {
+            var id = $("input[name='order_id']").val();
             var url = "hxkt://order/detail?" + "id="+id
 
             $("a[name='order']").attr("href", url);
-            $("p[name='order_url'").text(url);
+            $("p[name='order_url']").text(url);
 
         });
 

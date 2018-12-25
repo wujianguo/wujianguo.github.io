@@ -54,6 +54,22 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title">订单详情页</h5>
+                    <p class="card-text" name="order_url">hxkt://</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">订单 id</span>
+                        </div>
+                        <input name="order_id" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <a href="#" name="order" class="btn btn-primary">去付款</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
                     <h5 class="card-title">嗨聊直播间</h5>
                     <p class="card-text" name="live_url">hxkt://</p>
                     <div class="input-group mb-3">
@@ -67,6 +83,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Optional JavaScript -->
@@ -84,10 +101,10 @@
             var t = $('#present_type_select').find("option:selected").val();
             var id = $("input[name='goods_id'").val();
             var callback_url = $("input[name='callback'").val();
-            var url = "hxkt://goods/buy?" + "id="+id + "&present="+t;
+            var url = "hxkt://goods/detail?" + "id="+id + "&present="+t;
             if (callback_url.length > 0) {
                 var u = encodeURIComponent(callback_url)
-                url = "hxkt://goods/buy?" + "id="+id + "&present="+t + "&callback="+u;
+                url = "hxkt://goods/detail?" + "id="+id + "&present="+t + "&callback="+u;
             }
             $("a[name='buy']").attr("href", url);
             $("p[name='goods_url'").text(url);
@@ -111,6 +128,15 @@
 
             $("a[name='watch']").attr("href", url);
             $("p[name='live_url'").text(url);
+
+        });
+
+        $("input[name='order_id'").on('input', function (e) {
+            var id = $("input[name='order_id'").val();
+            var url = "hxkt://order/detail?" + "id="+id
+
+            $("a[name='order']").attr("href", url);
+            $("p[name='order_url'").text(url);
 
         });
 

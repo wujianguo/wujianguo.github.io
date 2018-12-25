@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+
+    <title>Haixue</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">商品详情页</h5>
+                    <p class="card-text" name="goods_url">hxkt://</p>
+                    <!-- <p class="card-text">输入商品 id，跳转方式和购买成功后的回调地址（可选）</p> -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">商品 id</span>
+                        </div>
+                        <input name="goods_id" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default" for="present_type_select">跳转方式</span>
+                        </div>
+                        <select class="custom-select" id="present_type_select">
+                            <!-- <option selected>请选择...</option> -->
+                            <option selected value="push">push</option>
+                            <option value="modal">modal</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">回调地址</span>
+                        </div>
+                        <input name="callback" type="text" class="form-control" placeholder="url 地址，可不填" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+                    <a href="#" name="buy" class="btn btn-primary">去购买</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">嗨聊直播间</h5>
+                    <p class="card-text" name="live_url">hxkt://</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">直播 id</span>
+                        </div>
+                        <input name="live_id" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <a href="#" name="watch" class="btn btn-primary">去观看</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        function update_goods() {
+            var t = $('#present_type_select').find("option:selected").val();
+            var id = $("input[name='goods_id'").val();
+            var callback_url = $("input[name='callback'").val();
+            var url = "hxkt://goods/buy?" + "id="+id + "&present="+t;
+            if (callback_url.length > 0) {
+                var u = encodeURIComponent(callback_url)
+                url = "hxkt://goods/buy?" + "id="+id + "&present="+t + "&callback="+u;
+            }
+            $("a[name='buy']").attr("href", url);
+            $("p[name='goods_url'").text(url);
+        }
+
+        $('#present_type_select').on('change', function (e) {
+            update_goods();
+        });
+
+        $("input[name='goods_id'").on('input', function (e) {
+            update_goods();
+        });
+
+        $("input[name='callback'").on('input', function (e) {
+            update_goods();
+        });
+
+        $("input[name='live_id'").on('input', function (e) {
+            var id = $("input[name='live_id'").val();
+            var url = "hxkt://live/highchat?" + "id="+id
+
+            $("a[name='watch']").attr("href", url);
+            $("p[name='live_url'").text(url);
+
+        });
+
+    </script>
+
+</body>
+
+</html>

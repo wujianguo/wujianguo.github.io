@@ -18,6 +18,41 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title">基本信息</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>User-Agent</td>
+                                <td name="ua">Otto</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>uid</td>
+                                <td name="uid"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>name</td>
+                                <td name="nick"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <p class="card-text" name="ua">hxkt://</p> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
                     <h5 class="card-title">商品详情页</h5>
                     <p class="card-text" name="goods_url">hxkt://</p>
                     <!-- <p class="card-text">输入商品 id，跳转方式和购买成功后的回调地址（可选）</p> -->
@@ -97,14 +132,21 @@
 
     <script type="text/javascript">
 
+        $("td[name='ua']").text(navigator.userAgent);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const uid = urlParams.get('uid');
+        $("td[name='uid']").text(uid);
+
+
         function update_goods() {
             var t = $('#present_type_select').find("option:selected").val();
             var id = $("input[name='goods_id']").val();
             var callback_url = $("input[name='callback']").val();
-            var url = "hxkt://goods/detail?" + "id="+id + "&present="+t;
+            var url = "hxkt://goods/detail?" + "id=" + id + "&present=" + t;
             if (callback_url.length > 0) {
                 var u = encodeURIComponent(callback_url)
-                url = "hxkt://goods/detail?" + "id="+id + "&present="+t + "&callback="+u;
+                url = "hxkt://goods/detail?" + "id=" + id + "&present=" + t + "&callback=" + u;
             }
             $("a[name='buy']").attr("href", url);
             $("p[name='goods_url']").text(url);
@@ -124,7 +166,7 @@
 
         $("input[name='live_id']").on('input', function (e) {
             var id = $("input[name='live_id']").val();
-            var url = "hxkt://live/highchat?" + "id="+id
+            var url = "hxkt://live/highchat?" + "id=" + id
 
             $("a[name='watch']").attr("href", url);
             $("p[name='live_url']").text(url);
@@ -133,11 +175,38 @@
 
         $("input[name='order_id']").on('input', function (e) {
             var id = $("input[name='order_id']").val();
-            var url = "hxkt://order/detail?" + "id="+id
+            var url = "hxkt://order/detail?" + "id=" + id
 
             $("a[name='order']").attr("href", url);
             $("p[name='order_url']").text(url);
 
+        });
+
+        $("a[name='buy']").click(function() { 
+            if (navigator.userAgent.indexOf("hxkt") == -1) {
+                alert("请在嗨学课堂内打开");
+                return false; 
+            } else {
+                return true; 
+            }
+        });
+
+        $("a[name='watch']").click(function() { 
+            if (navigator.userAgent.indexOf("hxkt") == -1) {
+                alert("请在嗨学课堂内打开");
+                return false; 
+            } else {
+                return true; 
+            }
+        });
+
+        $("a[name='order']").click(function() { 
+            if (navigator.userAgent.indexOf("hxkt") == -1) {
+                alert("请在嗨学课堂内打开");
+                return false; 
+            } else {
+                return true; 
+            }
         });
 
     </script>

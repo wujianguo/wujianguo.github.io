@@ -98,6 +98,13 @@
                         <input name="order_id" type="text" class="form-control" aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default">
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">回调地址</span>
+                        </div>
+                        <input name="callback_order" type="text" class="form-control" placeholder="url 地址，可不填" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
                     <a href="#" name="order" class="btn btn-primary">去付款</a>
                 </div>
             </div>
@@ -164,6 +171,25 @@
             update_goods();
         });
 
+        function update_order() {
+            var id = $("input[name='order_id']").val();
+            var url = "hxkt://order/detail?" + "id=" + id
+            var callback_url = $("input[name='callback_order']").val();
+
+            if (callback_url.length > 0) {
+                var u = encodeURIComponent(callback_url)
+                url =  "hxkt://order/detail?" + "id=" + id + "&callback=" + u;
+            }
+
+            $("a[name='order']").attr("href", url);
+            $("p[name='order_url']").text(url);
+        }
+
+
+        $("input[name='callback_order']").on('input', function (e) {
+            update_order();
+        });
+
         $("input[name='live_id']").on('input', function (e) {
             var id = $("input[name='live_id']").val();
             var url = "hxkt://live/highchat?" + "id=" + id
@@ -174,11 +200,12 @@
         });
 
         $("input[name='order_id']").on('input', function (e) {
-            var id = $("input[name='order_id']").val();
-            var url = "hxkt://order/detail?" + "id=" + id
+            update_order();
+            // var id = $("input[name='order_id']").val();
+            // var url = "hxkt://order/detail?" + "id=" + id
 
-            $("a[name='order']").attr("href", url);
-            $("p[name='order_url']").text(url);
+            // $("a[name='order']").attr("href", url);
+            // $("p[name='order_url']").text(url);
 
         });
 /*

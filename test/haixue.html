@@ -125,6 +125,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">自定义</h5>
+                    <!-- <p class="card-text" name="custom_url">hxkt://</p> -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">url</span>
+                        </div>
+                        <input name="custom_url" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <a href="#" name="custom_url" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -208,6 +224,12 @@
             // $("p[name='order_url']").text(url);
 
         });
+
+        $("input[name='custom_url']").on('input', function (e) {
+            var url = $("input[name='custom_url']").val();
+            $("a[name='custom_url']").attr("href", url);
+        });
+
 /*
         $("a[name='buy']").click(function () {
             if (navigator.userAgent.indexOf("hxkt") == -1) {

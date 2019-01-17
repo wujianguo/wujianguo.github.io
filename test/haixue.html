@@ -40,8 +40,8 @@
                             </tr>
                             <tr>
                                 <th scope="row">3</th>
-                                <td>name</td>
-                                <td name="nick"></td>
+                                <td>url</td>
+                                <td name="url"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -155,6 +155,7 @@
 
     <script type="text/javascript">
 
+        $("td[name='url']").text(window.location.href);
         $("td[name='ua']").text(navigator.userAgent);
 
         const urlParams = new URLSearchParams(window.location.search);

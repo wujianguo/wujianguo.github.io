@@ -191,8 +191,8 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                         </div>
                         <select class="custom-select" id="present_type_select">
                             <!-- <option selected>请选择...</option> -->
-                            <option selected value="moment">朋友圈</option>
-                            <option value="friends">微信好友</option>
+                            <option selected value="timeline">朋友圈</option>
+                            <option value="session">微信好友</option>
                         </select>
                         <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
                     </div>
@@ -200,6 +200,69 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">微信分享小程序</h5>
+                    <!-- <p class="card-text" name="custom_url">hxkt://</p> -->
+                    <div>
+                        <button type="button" class="btn btn-primary">选择图片</button>
+                    </div>
+                    <div>
+                        <img id="share_img" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+    9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="share image" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">webpageUrl</span>
+                        </div>
+                        <input name="custom_url" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" placeholder="兼容低版本的网页链接">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">userName</span>
+                        </div>
+                        <input name="custom_url" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" placeholder="登录小程序管理后台-设置-基本设置-帐号信息">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">path</span>
+                        </div>
+                        <input name="custom_url" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" placeholder="小程序的页面路径">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default"
+                                for="present_type_select">miniProgramType</span>
+                        </div>
+                        <select class="custom-select" id="present_type_select">
+                            <!-- <option selected>请选择...</option> -->
+                            <option selected value="release">正式版</option>
+                            <option value="test">开发版</option>
+                            <option value="preview">体验版</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                    </div>
+                    <!-- <a href="#" name="custom_url" class="btn btn-primary">分享</a> -->
+                    <button type="button" class="btn btn-primary" onclick="shareText()">分享</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">微信登录</h5>
+                    <button type="button" class="btn btn-primary" onclick="shareText()">登录</button>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 

@@ -297,6 +297,13 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
             shareToWechat("share", "text", "moment");
         }
 
+        /*
+        *   content: 内容，文字或者图片，图片为 base64 编码，如 data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+    9TXL0Y4OHwAAAABJRU5ErkJggg==
+        *   contentType: 类型，text 或者 image
+        *   shareType: 分享到哪里，朋友圈: session, 聊天界面:timeline
+        */
         function shareToWechat(content, contentType, shareType) {
             var data = {
                 "content": content,

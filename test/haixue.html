@@ -294,7 +294,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
         });
 
         function shareText() {
-            shareToWechat("share", "text", "moment");
+            shareToWechat("share", "text", "moment", "12hdjene");
         }
 
         /*
@@ -303,17 +303,23 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
     9TXL0Y4OHwAAAABJRU5ErkJggg==
         *   contentType: 类型，text 或者 image
         *   shareType: 分享到哪里，朋友圈: session, 聊天界面:timeline
+        *   id: 分享标识，用于在回调时可以作判断是哪个分享回调的
         */
-        function shareToWechat(content, contentType, shareType) {
+        function shareToWechat(content, contentType, shareType, id) {
             var data = {
                 "content": content,
                 "contentType": contentType,
                 "shareType": shareType,
-                "id": "hello"
+                "id": id
             }
             window.webkit.messageHandlers.shareToWechat.postMessage(data);
         }
 
+        /*
+        *   分享结果：result
+        *   result.code: 为 0 则成功，其他则失败，目前微信限制了，用户如果取消了也会返回成功
+        *   result.id: shareToWechat 传入的 id
+        */
         function onWechatShareResult(result) {
             alert(result.id)
         }

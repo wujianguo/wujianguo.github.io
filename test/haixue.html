@@ -151,18 +151,18 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">内容</span>
                         </div>
-                        <input name="custom_url" type="text" class="form-control" aria-label="Sizing example input"
+                        <input name="share_text" type="text" class="form-control" aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default"
-                                for="present_type_select">分享到</span>
+                                for="share_text_type_select">分享到</span>
                         </div>
-                        <select class="custom-select" id="present_type_select">
+                        <select class="custom-select" id="share_text_type_select">
                             <!-- <option selected>请选择...</option> -->
-                            <option selected value="moment">朋友圈</option>
-                            <option value="friends">微信好友</option>
+                            <option selected value="timeline">朋友圈</option>
+                            <option value="session">微信好友</option>
                         </select>
                         <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
                     </div>
@@ -187,16 +187,16 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default"
-                                for="present_type_select">分享到</span>
+                                for="share_image_type_select">分享到</span>
                         </div>
-                        <select class="custom-select" id="present_type_select">
+                        <select class="custom-select" id="share_image_type_select">
                             <!-- <option selected>请选择...</option> -->
                             <option selected value="timeline">朋友圈</option>
                             <option value="session">微信好友</option>
                         </select>
                         <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
                     </div>
-                    <a href="#" name="custom_url" class="btn btn-primary">分享</a>
+                    <button type="button" class="btn btn-primary" onclick="shareImage()">分享</button>
                 </div>
             </div>
         </div>
@@ -358,6 +358,10 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
 
         function shareText() {
             shareToWechat("share", "text", "moment", "12hdjene");
+        }
+
+        function shareMiniProgram() {
+            
         }
 
         /*

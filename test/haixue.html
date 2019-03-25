@@ -145,6 +145,15 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title">跳转到订单列表</h5>
+                    <a href="hxkt://order/list" name="custom_url" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
                     <h5 class="card-title">微信分享文字</h5>
                     <!-- <p class="card-text" name="custom_url">hxkt://</p> -->
                     <div class="input-group mb-3">
@@ -263,7 +272,6 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
             </div>
         </div>
 
-
     </div>
 
     <!-- Optional JavaScript -->
@@ -360,8 +368,34 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
             shareToWechat("share", "text", "moment", "12hdjene");
         }
 
+
+        function authWechat() {
+            var data = {
+                "id": ""
+            };
+            window.webkit.messageHandlers.authWechat.postMessage(data);
+        }
+
+        function onWechatAuth(result) {
+            console.log(result.id);
+            console.log(result.data);
+        }
+
+        /*
+        *
+        * 分享小程序
+        */
         function shareMiniProgram() {
-            
+            var data = {
+                "id": "",
+                "webpageUrl": "",
+                "userName": "",
+                "path": "",
+                "hdImageData": "",
+                "withShareTicket": true,
+                "miniProgramType": ""
+            };
+            window.webkit.messageHandlers.shareMiniProgram.postMessage(data);
         }
 
         /*
@@ -378,7 +412,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                 "contentType": contentType,
                 "shareType": shareType,
                 "id": id
-            }
+            };
             window.webkit.messageHandlers.shareToWechat.postMessage(data);
         }
 
